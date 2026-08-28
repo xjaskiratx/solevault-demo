@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoleVault — Vol 1 Oracle Edition</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800&family=DM+Mono:wght@400;500&family=Archivo+Black&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       RESET & ROOT
+    ═══════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #209aaf;
+      --teal-light: #62eaf4;
+      --black:      #000000;
+      --white:      #ffffff;
+      --dim:        #bbbbbb;
+      --card-sub:   #90696a;
+
+      --ff-logo: 'Aboreto', serif;
+      --ff-body: 'DM Sans', sans-serif;
+      --ff-mono: 'DM Mono', monospace;
+      --ff-card: 'Archivo Black', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--ff-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCROLL REVEAL UTILITY
+    ═══════════════════════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       STICKY HEADER
+    ═══════════════════════════════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    /* Top announcement bar */
+    .top-bar {
+      background: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 28px;
+    }
+    .top-bar span {
+      font-family: var(--ff-body);
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* Main navbar */
+    .navbar {
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px 8px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .nav-link {
+      font-family: var(--ff-body);
+      font-size: clamp(10px, 1.1vw, 16px);
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .nav-link:hover { opacity: 0.65; }
+    .nav-link.right { letter-spacing: -0.6px; }
+
+    /* Logo */
+    .logo {
+      font-family: var(--ff-logo);
+      color: var(--teal);
+      line-height: 1;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .logo .lg { font-size: clamp(26px, 4.2vw, 56px); }
+    .logo .sm { font-size: clamp(21px, 3.3vw, 45px); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 1 — HERO
+    ═══════════════════════════════════════════════════════════════ */
+    .hero {
+      padding: 18px 28px 0;
+      min-height: calc(100svh - 90px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tagline */
+    .hero-tagline {
+      font-family: var(--ff-body);
+      font-size: clamp(9px, 1.1vw, 15px);
+      font-weight: 500;
+      letter-spacing: clamp(7px, 1.4vw, 17px);
+      color: var(--black);
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.8;
+      margin: 6px 0 14px;
+    }
+
+    /* Full-width rule */
+    .rule { height: 2px; background: var(--black); }
+
+    /* Hero body: card stack + stats */
+    .hero-body {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 4vw, 56px);
+      padding: 32px 0 24px;
+      flex: 1;
+    }
+
+    /* ── Card stack ── */
+    .card-stack {
+      flex-shrink: 0;
+      position: relative;
+      width: clamp(210px, 32vw, 420px);
+      aspect-ratio: 1050 / 600;
+    }
+    .sneaker-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--white);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .sneaker-card:nth-child(1) { transform: rotate(-2.5deg) translateY(-6px); box-shadow: -3px -3px 10px 2px rgba(0,0,0,.38); }
+    .sneaker-card:nth-child(2) { transform: rotate(-1.4deg) translateY(-3px); box-shadow: 3px 3px 8px rgba(0,0,0,.28); }
+    .sneaker-card:nth-child(3) { transform: rotate(-0.4deg);                  box-shadow: 3px 3px 8px rgba(0,0,0,.28); }
+    .sneaker-card:nth-child(4) { transform: rotate(0.6deg)  translateY(2px);  box-shadow: 3px 3px 8px rgba(0,0,0,.28); }
+
+    .card-stack:hover .sneaker-card:nth-child(1) { transform: rotate(-3.5deg) translateY(-10px) translateX(-5px); }
+    .card-stack:hover .sneaker-card:nth-child(2) { transform: rotate(-2deg)   translateY(-6px); }
+    .card-stack:hover .sneaker-card:nth-child(3) { transform: rotate(-0.5deg) translateY(-2px); }
+    .card-stack:hover .sneaker-card:nth-child(4) { transform: rotate(1.2deg)  translateY(3px); }
+
+    /* Card internals */
+    .card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .card-mask-layer {
+      position: absolute; inset: 0;
+      -webkit-mask-image: var(--mask-url); mask-image: var(--mask-url);
+      -webkit-mask-size: 100% auto;        mask-size: 100% auto;
+      -webkit-mask-repeat: no-repeat;      mask-repeat: no-repeat;
+      -webkit-mask-position: center;       mask-position: center;
+    }
+    .card-mask-layer img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .card-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.22)); }
+
+    .card-title {
+      position: absolute; top: 9%; left: 0; right: 0;
+      font-family: var(--ff-card);
+      font-size: clamp(8px, 1.8vw, 19px);
+      color: var(--teal-light);
+      text-align: center;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 5px rgba(0,0,0,.45);
+    }
+    .card-subtitle {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      left: 0; right: 0;
+      font-family: var(--ff-card);
+      font-size: clamp(5px, .9vw, 9px);
+      color: var(--card-sub);
+      text-align: center;
+      letter-spacing: -0.8px;
+      padding: 0 6px;
+    }
+    .card-atm { position: absolute; bottom: 10%; left: 4%; width: 92%; }
+
+    /* ── Stats panel ── */
+    .stats-panel { flex: 1; display: flex; flex-direction: column; gap: 18px; }
+
+    .stats-desc {
+      font-family: var(--ff-body);
+      font-size: clamp(8px, .95vw, 13px);
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: 5px;
+      line-height: 1.95;
+      text-transform: uppercase;
+    }
+
+    .stats-row { display: flex; gap: clamp(16px, 4vw, 52px); align-items: flex-start; }
+
+    .stat-item { display: flex; flex-direction: column; gap: 3px; }
+
+    .stat-label {
+      font-family: var(--ff-body);
+      font-size: clamp(8px, .85vw, 12px);
+      font-weight: 400;
+      letter-spacing: 5px;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+    .stat-value {
+      font-family: var(--ff-body);
+      font-weight: 800;
+      font-size: clamp(26px, 3.8vw, 52px);
+      color: var(--teal);
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+
+    /* Hero footer strip */
+    .hero-strip {
+      text-align: center;
+      font-family: var(--ff-body);
+      font-weight: 500;
+      font-size: clamp(8px, 1.1vw, 15px);
+      letter-spacing: clamp(2px, .5vw, 5px);
+      color: var(--black);
+      padding: 14px 0 8px;
+      line-height: 2;
+    }
+    .hero-strip .accent { color: var(--teal); }
+
+    /* Swipe CTA */
+    .swipe-cta {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 0 20px;
+      cursor: pointer;
+    }
+    .swipe-cta span {
+      font-family: var(--ff-body);
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--black);
+    }
+    .swipe-arrow {
+      width: 16px; height: 16px;
+      border-left: 1.5px solid var(--black);
+      border-top:  1.5px solid var(--black);
+      transform: rotate(225deg);
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(225deg) translate(0,0); }
+      50%       { transform: rotate(225deg) translate(-3px,-3px); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 2 — COLLECTION SECTIONS
+    ═══════════════════════════════════════════════════════════════ */
+    .collection { padding: 0; }
+
+    .series-section {
+      padding: 32px 28px 12px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 2px;
+    }
+    .section-meta { flex: 1; }
+
+    .issue-label {
+      font-family: var(--ff-mono);
+      font-size: clamp(9px, .95vw, 13px);
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--black);
+    }
+    .series-title {
+      font-family: var(--ff-mono);
+      font-size: clamp(18px, 2.5vw, 34px);
+      font-weight: 500;
+      color: var(--black);
+      margin-top: 2px;
+      letter-spacing: 1px;
+    }
+
+    .browse-btn {
+      border: 3px solid var(--black);
+      background: transparent;
+      color: var(--black);
+      font-family: var(--ff-body);
+      font-size: clamp(9px, .95vw, 13px);
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .browse-btn:hover { background: var(--black); color: var(--white); }
+
+    /* Card grid */
+    .card-grid {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-top: 18px;
+    }
+
+    .card-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .v-divider {
+      width: 5px;
+      flex-shrink: 0;
+      align-self: stretch;
+      background: var(--black);
+      margin: 0 clamp(10px, 1.6vw, 24px);
+    }
+
+    /* Card thumbnail */
+    .card-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 484 / 277;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 2px 2px 8px rgba(0,0,0,.22);
+      transition: box-shadow .3s ease, transform .3s ease;
+    }
+    .card-col:hover .card-thumb {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.28);
+    }
+
+    /* Card metadata */
+    .card-meta { font-family: var(--ff-body); line-height: 1.3; color: var(--black); }
+    .card-score { font-family: var(--ff-body); font-size: clamp(9px, .9vw, 13px); color: var(--black); margin-top: -2px; }
+
+    /* Mixed-caps spans */
+    .mc-big { font-size: 1em; }
+    .mc-sml { font-size: .76em; text-transform: uppercase; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 3 — FOOTER
+    ═══════════════════════════════════════════════════════════════ */
+    .site-footer {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1.4fr 1fr;
+      gap: clamp(24px, 3vw, 52px);
+      padding: clamp(36px, 5vw, 60px) clamp(28px, 3vw, 40px) clamp(28px, 4vw, 48px);
+      margin-top: clamp(28px, 4vw, 52px);
+    }
+
+    /* Col 1: brand */
+    .ft-logo {
+      font-family: var(--ff-logo);
+      color: var(--teal);
+      line-height: 1;
+      user-select: none;
+      display: block;
+    }
+    .ft-logo .lg { font-size: clamp(28px, 4vw, 56px); }
+    .ft-logo .sm { font-size: clamp(22px, 3.2vw, 44px); }
+
+    .ft-tagline {
+      font-family: var(--ff-body);
+      font-size: clamp(9px, .9vw, 13px);
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: clamp(6px, 1.2vw, 15px);
+      line-height: 2;
+      margin-top: 14px;
+      text-transform: uppercase;
+    }
+
+    /* Col 2–4: content */
+    .ft-heading {
+      font-family: var(--ff-body);
+      font-size: clamp(12px, 1.2vw, 18px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.2px;
+    }
+    .ft-body {
+      font-family: var(--ff-body);
+      font-size: clamp(10px, .95vw, 14px);
+      color: var(--white);
+      line-height: 1.8;
+      opacity: 0.88;
+    }
+
+    .ft-nav-list { list-style: none; margin-bottom: 26px; }
+    .ft-nav-list li + li { margin-top: 2px; }
+    .ft-nav-list a {
+      font-family: var(--ff-body);
+      font-size: clamp(10px, .95vw, 14px);
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.85;
+      line-height: 1.9;
+      display: block;
+      transition: opacity .2s;
+    }
+    .ft-nav-list a:hover { opacity: 1; text-decoration: underline; }
+
+    .ft-legal-list { list-style: none; margin-bottom: 26px; }
+    .ft-legal-list li + li { margin-top: 1px; }
+    .ft-legal-list a {
+      font-family: var(--ff-body);
+      font-size: clamp(9px, .85vw, 13px);
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.65;
+      line-height: 1.95;
+      display: block;
+      transition: opacity .2s;
+    }
+    .ft-legal-list a:hover { opacity: 1; }
+
+    .ft-credit {
+      font-family: var(--ff-body);
+      font-size: clamp(9px, .85vw, 13px);
+      color: var(--white);
+      opacity: 0.65;
+      line-height: 1.7;
+    }
+    .ft-credit strong { font-weight: 700; opacity: 1; }
+
+    /* Bottom strip */
+    .ft-bottom {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 13px clamp(28px, 3vw, 40px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .ft-bottom span {
+      font-family: var(--ff-body);
+      font-size: 10px;
+      color: rgba(255,255,255,.35);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE ADJUSTMENTS
+    ═══════════════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-body { flex-direction: column; align-items: center; }
+      .card-stack { width: clamp(260px, 75vw, 480px); }
+      .stats-panel { align-items: center; text-align: center; }
+      .stats-row { justify-content: center; }
+
+      .site-footer {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar span:first-child { display: none; }
+      .series-section { padding: 24px 16px 8px; }
+      .v-divider { margin: 0 8px; }
+
+      .site-footer {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       STICKY HEADER (shared across all screens)
+  ═══════════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="top-bar">
+      <span id="js-date">Wednesday&nbsp; April 15, 2026</span>
+      <span>VOL 1 &bull; ORACLE EDITION</span>
+    </div>
+    <nav class="navbar">
+      <a class="nav-link" href="#">DASHBOARD | COLLECTION</a>
+      <div class="logo">
+        <span class="lg">S</span><span class="sm">ole</span><span class="lg">V</span><span class="sm">ault</span>
+      </div>
+      <a class="nav-link right" href="#">+ NEW CARD | SIGN IN</a>
+    </nav>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCREEN 1 — HERO
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+
+    <!-- Tagline -->
+    <p class="hero-tagline reveal">
+      AUTHENTIC NIKE<br>TRADING CARDS
+    </p>
+
+    <!-- Divider -->
+    <div class="rule"></div>
+
+    <!-- Card stack + stats -->
+    <div class="hero-body">
+
+      <!-- Card stack -->
+      <div class="card-stack reveal" style="transition-delay:.1s">
+        <div class="sneaker-card">
+          <img class="card-bg" src="https://www.figma.com/api/mcp/asset/bce8108a-d694-47c3-8dd9-9f28acb4a795" alt=""/>
+          <div class="card-mask-layer" style="--mask-url:url('https://www.figma.com/api/mcp/asset/bda152db-74f8-4ac2-a04e-5285aa07e669')">
+            <img src="https://www.figma.com/api/mcp/asset/8570a912-f6fd-49c6-a1e4-236ea73a1b83" alt="Air Jordan 1"/>
+          </div>
+          <div class="card-gradient"></div>
+          <p class="card-title">AIR JORDAN &nbsp;&nbsp;&nbsp; 1 HIGH OG</p>
+          <p class="card-subtitle">WHERE HARDWOOD LEGACY MEETS STREET LUXURY</p>
+          <img class="card-atm" src="https://www.figma.com/api/mcp/asset/f74f599d-b432-49ab-959b-e11f1f97b063" alt="Atmosphere"/>
+        </div>
+        <div class="sneaker-card">
+          <img class="card-bg" src="https://www.figma.com/api/mcp/asset/bce8108a-d694-47c3-8dd9-9f28acb4a795" alt=""/>
+          <div class="card-mask-layer" style="--mask-url:url('https://www.figma.com/api/mcp/asset/bda152db-74f8-4ac2-a04e-5285aa07e669')">
+            <img src="https://www.figma.com/api/mcp/asset/8570a912-f6fd-49c6-a1e4-236ea73a1b83" alt=""/>
+          </div>
+          <div class="card-gradient"></div>
+          <p class="card-title">AIR JORDAN &nbsp;&nbsp;&nbsp; 1 HIGH OG</p>
+          <p class="card-subtitle">WHERE HARDWOOD LEGACY MEETS STREET LUXURY</p>
+          <img class="card-atm" src="https://www.figma.com/api/mcp/asset/f74f599d-b432-49ab-959b-e11f1f97b063" alt=""/>
+        </div>
+        <div class="sneaker-card">
+          <img class="card-bg" src="https://www.figma.com/api/mcp/asset/bce8108a-d694-47c3-8dd9-9f28acb4a795" alt=""/>
+          <div class="card-mask-layer" style="--mask-url:url('https://www.figma.com/api/mcp/asset/bda152db-74f8-4ac2-a04e-5285aa07e669')">
+            <img src="https://www.figma.com/api/mcp/asset/8570a912-f6fd-49c6-a1e4-236ea73a1b83" alt=""/>
+          </div>
+          <div class="card-gradient"></div>
+          <p class="card-title">AIR JORDAN &nbsp;&nbsp;&nbsp; 1 HIGH OG</p>
+          <p class="card-subtitle">WHERE HARDWOOD LEGACY MEETS STREET LUXURY</p>
+          <img class="card-atm" src="https://www.figma.com/api/mcp/asset/f74f599d-b432-49ab-959b-e11f1f97b063" alt=""/>
+        </div>
+        <div class="sneaker-card">
+          <img class="card-bg" src="https://www.figma.com/api/mcp/asset/bce8108a-d694-47c3-8dd9-9f28acb4a795" alt=""/>
+          <div class="card-mask-layer" style="--mask-url:url('https://www.figma.com/api/mcp/asset/bda152db-74f8-4ac2-a04e-5285aa07e669')">
+            <img src="https://www.figma.com/api/mcp/asset/8570a912-f6fd-49c6-a1e4-236ea73a1b83" alt=""/>
+          </div>
+          <div class="card-gradient"></div>
+          <p class="card-title">AIR JORDAN &nbsp;&nbsp;&nbsp; 1 HIGH OG</p>
+          <p class="card-subtitle">WHERE HARDWOOD LEGACY MEETS STREET LUXURY</p>
+          <img class="card-atm" src="https://www.figma.com/api/mcp/asset/f74f599d-b432-49ab-959b-e11f1f97b063" alt=""/>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-panel reveal" style="transition-delay:.2s">
+        <p class="stats-desc">
+          80&nbsp; CARDS RANKED, INDEXED AND<br>
+          VERIFIED BY OUR VERY OWN RAW ENGINE.<br>
+          THIS, IS THE NEXT WAVE OF COLLECTIBLES.
+        </p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-label">Volume</span>
+            <span class="stat-value">01</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Current Edition</span>
+            <span class="stat-value">ORACLE</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Cards</span>
+            <span class="stat-value">80</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hero-body -->
+
+    <!-- Info strip -->
+    <p class="hero-strip reveal" style="transition-delay:.3s">
+      UPDATES <span class="accent">EVERY</span> WEEK &nbsp;|&nbsp;
+      <span class="accent">6</span> RARITY TIERS &nbsp;|<br>
+      <span class="accent">4</span> SERIES STRUCTURE &nbsp;|&nbsp;
+      <span class="accent">SERIALIZED</span> CARDS
+    </p>
+
+    <!-- Swipe CTA -->
+    <div class="swipe-cta reveal" style="transition-delay:.4s" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+      <span>SWIPE UP TO EXPLORE</span>
+      <div class="swipe-arrow"></div>
+    </div>
+
+  </section><!-- /hero -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCREEN 2 — COLLECTION BROWSE
+  ═══════════════════════════════════════════════════════════════ -->
+  <main class="collection" id="collection">
+
+    <!-- Series section 1 -->
+    <section class="series-section reveal">
+      <div class="section-header">
+        <div class="section-meta">
+          <p class="issue-label">ISSUE 01 &nbsp;&bull;&nbsp; HIGH VOLUME LEGENDS</p>
+          <p class="series-title">ICON SERIES</p>
+        </div>
+        <button class="browse-btn">BROWSE ALL</button>
+      </div>
+      <div class="rule"></div>
+      <div class="card-grid" data-cards></div>
+    </section>
+
+    <!-- Series section 2 -->
+    <section class="series-section reveal">
+      <div class="section-header">
+        <div class="section-meta">
+          <p class="issue-label">ISSUE 01 &nbsp;&bull;&nbsp; HIGH VOLUME LEGENDS</p>
+          <p class="series-title">ICON SERIES</p>
+        </div>
+        <button class="browse-btn">BROWSE ALL</button>
+      </div>
+      <div class="rule"></div>
+      <div class="card-grid" data-cards></div>
+    </section>
+
+    <!-- Series section 3 (final, no header — tail end visible at bottom of screen 2) -->
+    <section class="series-section reveal">
+      <div class="section-header">
+        <div class="section-meta">
+          <p class="issue-label">ISSUE 02 &nbsp;&bull;&nbsp; RETRO RUNNERS</p>
+          <p class="series-title">HERITAGE SERIES</p>
+        </div>
+        <button class="browse-btn">BROWSE ALL</button>
+      </div>
+      <div class="rule"></div>
+      <div class="card-grid" data-cards></div>
+    </section>
+
+    <!-- Tail section (cards only, no header — what you see scrolling into the footer screen) -->
+    <section class="series-section reveal" style="padding-top:8px">
+      <div class="section-header" style="justify-content:flex-end">
+        <button class="browse-btn">BROWSE ALL</button>
+      </div>
+      <div class="rule"></div>
+      <div class="card-grid" data-cards></div>
+    </section>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCREEN 3 — FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer reveal">
+
+    <!-- Col 1: Brand -->
+    <div class="ft-col ft-brand">
+      <span class="ft-logo">
+        <span class="lg">S</span><span class="sm">ole</span><span class="lg">V</span><span class="sm">ault</span>
+      </span>
+      <p class="ft-tagline">
+        AUTHENTIC NIKE<br>TRADING CARDS
+      </p>
+    </div>
+
+    <!-- Col 2: Our Story -->
+    <div class="ft-col">
+      <p class="ft-heading">OUR STORY</p>
+      <p class="ft-body">
+        SoleVault began as a personal archive —<br>
+        a way to document the culture weight each<br>
+        sneaker carries.<br><br>
+        Every card is ranked, indexed and verified<br>
+        by our very own RAW engine. This is the<br>
+        next wave of collectibles.
+      </p>
+    </div>
+
+    <!-- Col 3: Navigation + Email -->
+    <div class="ft-col">
+      <p class="ft-heading">Navigation</p>
+      <ul class="ft-nav-list">
+        <li><a href="#">Collection</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Submit a card</a></li>
+        <li><a href="#">Sign In</a></li>
+      </ul>
+      <p class="ft-heading">Email</p>
+      <p class="ft-body">solevault@oracle.com</p>
+    </div>
+
+    <!-- Col 4: Legal + Credit -->
+    <div class="ft-col">
+      <ul class="ft-legal-list">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+      <p class="ft-credit">
+        Developed &amp; Managed<br>
+        by <strong>JSX Studios</strong>
+      </p>
+    </div>
+
+  </footer>
+
+  <!-- Bottom copyright strip -->
+  <div class="ft-bottom">
+    <span>&copy; 2026 SoleVault &mdash; Oracle Edition</span>
+    <span>Vol 1 &bull; All Rights Reserved</span>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    /* ── Assets ── */
+    const ASSETS = {
+      bg:   'https://www.figma.com/api/mcp/asset/bce8108a-d694-47c3-8dd9-9f28acb4a795',
+      shoe: 'https://www.figma.com/api/mcp/asset/8570a912-f6fd-49c6-a1e4-236ea73a1b83',
+      mask: 'https://www.figma.com/api/mcp/asset/bda152db-74f8-4ac2-a04e-5285aa07e669',
+      atm:  'https://www.figma.com/api/mcp/asset/f74f599d-b432-49ab-959b-e11f1f97b063',
+    };
+
+    /* ── Dynamic date ── */
+    const dateEl = document.getElementById('js-date');
+    if (dateEl) {
+      dateEl.textContent = new Date().toLocaleDateString('en-US', {
+        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+      });
+    }
+
+    /* ── Mixed-caps helper ── */
+    function mixedCaps(text, bigEm, smlEm) {
+      return text.split('').map(ch => {
+        const big = ch === ch.toUpperCase() && /[A-Z\s\/\-]/.test(ch);
+        return `<span class="${big ? 'mc-big' : 'mc-sml'}" style="font-size:${big ? bigEm : smlEm}">${ch}</span>`;
+      }).join('');
+    }
+
+    /* ── Card thumbnail HTML ── */
+    function cardThumbHTML() {
+      return `
+        <div class="card-thumb">
+          <img class="card-bg" src="${ASSETS.bg}" alt="" loading="lazy"/>
+          <div class="card-mask-layer" style="--mask-url:url('${ASSETS.mask}')">
+            <img src="${ASSETS.shoe}" alt="Air Jordan 1" loading="lazy"/>
+          </div>
+          <div class="card-gradient"></div>
+          <p class="card-title">AIR JORDAN &nbsp;&nbsp; 1 HIGH OG</p>
+          <p class="card-subtitle">WHERE HARDWOOD LEGACY MEETS STREET LUXURY</p>
+          <img class="card-atm" src="${ASSETS.atm}" alt="Atmosphere" loading="lazy"/>
+        </div>`;
+    }
+
+    /* ── Card data ── */
+    const CARDS = [
+      { name: 'Air Jordan 1 High Retro', colorway: 'Chicago/White/Gym Red-Black', score: 'NAME SCORE – 94' },
+      { name: 'Air Jordan 1 High Retro', colorway: 'Chicago/White/Gym Red-Black', score: 'NAME SCORE – 94' },
+      { name: 'Air Jordan 1 High Retro', colorway: 'Chicago/White/Gym Red-Black', score: 'NAME SCORE – 94' },
+    ];
+
+    /* ── Inject card grids ── */
+    document.querySelectorAll('[data-cards]').forEach(grid => {
+      CARDS.forEach((c, i) => {
+        if (i > 0) {
+          const vd = document.createElement('div');
+          vd.className = 'v-divider';
+          grid.appendChild(vd);
+        }
+        const col = document.createElement('div');
+        col.className = 'card-col';
+        col.innerHTML = `
+          ${cardThumbHTML()}
+          <p class="card-meta">${mixedCaps(c.name, '1em', '.76em')}</p>
+          <p class="card-meta" style="margin-top:-3px">${mixedCaps(c.colorway, '1em', '.76em')}</p>
+          <p class="card-score">${c.score}</p>
+        `;
+        grid.appendChild(col);
+      });
+    });
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = el.style.transitionDelay || (i * 40) + 'ms';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
