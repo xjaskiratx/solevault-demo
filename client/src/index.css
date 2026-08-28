@@ -1,0 +1,150 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SOLEVAULT — DESIGN SYSTEM
+   Fonts   : Archivo Black (display) · DM Sans (body) · DM Mono (mono)
+   Spacing : Fibonacci  5 · 8 · 13 · 21 · 34 · 55 · 89 · 144px
+   Radius  : 0px everywhere (sharp / editorial)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* Imports moved to index.html for performance */
+
+/* ── Tokens ──────────────────────────────────────────────────────────────────*/
+:root {
+  /* Palette — solevault.html spec */
+  --teal:       #209aaf;
+  --teal-light: #62eaf4;
+  --black:      #000000;
+  --white:      #ffffff;
+  --dim:        #bbbbbb;
+  --card-sub:   #90696a;
+
+  --accent:     var(--teal);
+  --accent-inv: var(--white);
+  --nike-red:   #C8102E;
+
+  /* Accents */
+  --accent:       #209aaf;
+  --accent-inv:   #FFFFFF;
+  --nike-red:     #C8102E;
+  --nike-red-pale:#FFF0F2;
+
+  /* Text */
+  --text-primary:   #000000;
+  --text-secondary: #0A0A0A;
+  --text-muted:     #666666;
+  --text-faint:     #A0A0A0;
+
+  /* Fonts — solevault.html spec */
+  --ff-logo: 'Aboreto', serif;
+  --ff-body: 'DM Sans', sans-serif;
+  --ff-mono: 'DM Mono', monospace;
+  --ff-card: 'Archivo Black', sans-serif;
+
+  --font-logo:    var(--ff-logo);
+  --font-display: var(--ff-card);
+  --font-body:    var(--ff-body);
+  --font-mono:    var(--ff-mono);
+
+  /* Pale rainbow backgrounds (CardDetail) */
+  --pale-rose:    hsl(340 60% 98%);
+  --pale-amber:   hsl( 38 70% 98%);
+  --pale-sky:     hsl(210 60% 98%);
+  --pale-sage:    hsl(145 40% 97%);
+  --pale-violet:  hsl(260 50% 98%);
+
+  /* Border Radii */
+  --r:       4px;
+  --r-card:  var(--f4); /* 21px Fibonacci rounding */
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:  cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ── Reset ───────────────────────────────────────────────────────────────────*/
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.618; /* golden ratio */
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Allow h-tags to use display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────────*/
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+/* ── Selection ───────────────────────────────────────────────────────────────*/
+::selection { background: var(--accent); color: var(--accent-inv); }
+
+/* ── Typography utils ────────────────────────────────────────────────────────*/
+.u-mono    { font-family: var(--font-mono); }
+.u-display { font-family: var(--font-display); }
+.u-caps    { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.7rem; }
+.u-italic  { font-style: italic; }
+
+/* ── Page fade transition ────────────────────────────────────────────────────*/
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+.page-enter {
+  animation: pageFadeIn 0.35s var(--ease-out) both;
+}
+.page-exit {
+  animation: pageFadeOut 0.2s var(--ease-in) both;
+}
+
+/* ── Filter fade ─────────────────────────────────────────────────────────────*/
+@keyframes gridFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+.grid-fade { animation: gridFade 0.3s var(--ease-out) both; }
+
+/* ── Skeleton ────────────────────────────────────────────────────────────────*/
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.skeleton {
+  background: #EBEBEB;
+  position: relative;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  animation: shimmer 1.4s infinite;
+}
+
+/* ── Container ───────────────────────────────────────────────────────────────*/
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--f6);
+}
+@media (max-width: 768px) {
+  .container { padding: 0 var(--f4); }
+}
