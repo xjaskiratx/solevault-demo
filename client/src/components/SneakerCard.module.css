@@ -1,0 +1,168 @@
+/* ── SneakerCard — Flat Editorial Style ─────────────────────────────────── */
+.card {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  transition: transform 0.3s var(--ease-out);
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  padding-top: 57.14%; /* 1.75:1 landscape (1050x600) */
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: transparent; /* Fix geometry boundaries */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: box-shadow 0.3s var(--ease-out);
+}
+.card:hover .inner {
+  box-shadow: 0 12px 34px rgba(0,0,0,0.12);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--r-card);
+}
+
+.sideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.card:hover .sideImage {
+  transform: scale(1.05);
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: var(--f4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  z-index: 5;
+  background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, transparent 60%);
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  max-width: 70%;
+}
+
+.cardId {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.scoreLabel {
+  align-self: flex-end;
+  text-align: right;
+}
+.score {
+  font-family: var(--font-display);
+  font-size: 34px; /* fibonacci */
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+}
+.scoreHint {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Footer caption */
+.footer {
+  padding: var(--f4) var(--f4) var(--f5);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: transparent;
+}
+.footerMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--f1);
+}
+.footerName {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.footerSub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.dimTag {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+/* 1of1 shimmer */
+.card[data-rarity="1of1"] .inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,215,50,0.1) 50%,
+    rgba(255,255,255,0) 70%
+  );
+  background-size: 200% 200%;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card[data-rarity="1of1"]:hover .inner::after {
+  opacity: 1;
+  animation: holographic 2.5s linear infinite;
+}
+@keyframes holographic {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
