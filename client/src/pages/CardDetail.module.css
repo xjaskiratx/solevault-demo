@@ -1,0 +1,419 @@
+/* ── Card Detail — Sharp Editorial Inspection Layout ─────────────────────── */
+.page {
+  min-height: 100vh;
+  transition: background-color 0.5s var(--ease-out);
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--f6) var(--f7);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Breadcrumb */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--f2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin: var(--f6) 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  transition: color 0.2s;
+  padding: var(--f3) 0;
+  border-bottom: 1px solid var(--border);
+  display: block;
+  width: 100%;
+}
+.back:hover { color: var(--accent); }
+
+/* Editorial Header */
+.articleHeader {
+  padding: var(--f7) 0 var(--f5);
+  border-bottom: 2px solid var(--accent);
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  gap: var(--f7);
+  align-items: end;
+}
+
+.catTag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: var(--f4);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--f3);
+}
+.catTag::before {
+  content: '';
+  display: inline-block;
+  width: var(--f4);
+  height: 1.5px;
+  background: var(--accent);
+}
+
+.commonName {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 89px); /* Fibonacci 89 */
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+  line-height: 0.95;
+  margin-bottom: var(--f3);
+  text-transform: uppercase;
+}
+
+.colorway {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--f2);
+  justify-self: end;
+  text-align: right;
+}
+.priceLbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.priceVal {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 55px); /* Fibonacci 55 */
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 520px 1fr; /* Fixed left for card, fluid right */
+  gap: var(--f7);
+  align-items: start;
+  padding: var(--f7) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Left - Static Card */
+.cardContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 57.14%; /* 1.75:1 ratio (1050x600) */
+  cursor: crosshair;
+  background: transparent; /* Fix geometry boundaries */
+  border: 1px solid var(--border-hard);
+  overflow: hidden;
+  border-radius: var(--r-card);
+}
+
+.cardFace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+  border-radius: var(--r-card);
+}
+
+.visible { opacity: 1; z-index: 2; }
+.hidden { opacity: 0; z-index: 1; }
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: var(--f4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 5;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.cardName {
+  font-family: var(--font-display);
+  font-size: 21px; /* Fibonacci 21 */
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 80%;
+}
+.scoreBox { align-self: flex-end; text-align: right; }
+.scoreNum {
+  font-family: var(--font-display);
+  font-size: 55px; /* Fibonacci 55 */
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+}
+.scoreTag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+.cardId {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0.8;
+  letter-spacing: 0.14em;
+}
+.stats { display: flex; justify-content: space-between; align-items: flex-end; }
+.priceLabel {
+  font-family: var(--font-mono);
+  display: block;
+  font-size: 8px;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-bottom: 2px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.price {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+}
+.rarity {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Side Controls */
+.sideControls {
+  display: flex;
+  gap: 0;
+  margin-top: var(--f4);
+  border: 1.5px solid var(--accent);
+  width: fit-content;
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.sideBtn {
+  padding: var(--f3) var(--f5);
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-secondary);
+}
+.sideBtn:first-child { border-right: 1.5px solid var(--accent); }
+.sideActive { background: var(--accent); color: white; }
+.sideBtn:hover:not(.sideActive) { background: var(--bg-card-hover); }
+
+/* Breakdown */
+.breakdown {
+  margin-top: var(--f6);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hard);
+  padding: var(--f5);
+  border-radius: var(--r);
+}
+.breakdownTitle {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: var(--f4);
+  padding-bottom: var(--f3);
+  border-bottom: 1px solid var(--border);
+}
+.scoreBar { margin-bottom: var(--f4); }
+.scoreBarHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-secondary);
+  margin-bottom: var(--f2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.scoreBarTrack {
+  height: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+.scoreBarFill {
+  height: 100%;
+  transition: width 1.2s var(--ease-out);
+}
+
+/* Right - Specs or Zoom */
+.right { 
+  display: flex;
+  flex-direction: column;
+}
+
+/* Zoom Preview */
+.zoomWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--f3);
+  animation: fadeIn 0.3s ease;
+}
+.zoomPreview {
+  width: 100%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: 300%; /* Deep zoom */
+  border: 1px solid var(--border-hard);
+  background-color: var(--bg-surface);
+  border-radius: var(--r);
+}
+.zoomHint {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--nike-red);
+  font-weight: 600;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Detail Section */
+.details {
+  border-top: 1px solid var(--border-hard);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r);
+}
+.detailsHeader {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.25em;
+  padding: var(--f3) 0;
+  text-transform: uppercase;
+}
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--f4) 0;
+  border-bottom: 1px solid var(--border);
+}
+.detailLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.detailVal {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.mono { font-family: var(--font-mono); font-size: 12px; }
+
+/* Actions */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0;
+  border: 1.5px solid var(--accent);
+  margin-top: var(--f6);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.editBtn {
+  text-align: center;
+  padding: var(--f4) var(--f5);
+  background: var(--accent);
+  border: none;
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editBtn:hover { opacity: 0.88; }
+.deleteBtn {
+  padding: var(--f4) var(--f5);
+  background: transparent;
+  border: none;
+  border-left: 1.5px solid var(--accent);
+  color: var(--nike-red);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.deleteBtn:hover { background: var(--nike-red-pale); }
+
+@media (max-width: 1024px) {
+  .layout { grid-template-columns: 1fr; gap: var(--f6); }
+  .articleHeader { grid-template-columns: 1fr; gap: var(--f5); }
+  .priceBlock { text-align: left; justify-self: start; }
+  .zoomPreview { height: 350px; }
+}
