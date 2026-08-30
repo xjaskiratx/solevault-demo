@@ -1,0 +1,185 @@
+/* ── Add Card — Magazine Editorial Form ──────────────────────────────────── */
+.page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--f6) var(--f7);
+}
+
+.inner {
+  max-width: 880px;
+}
+
+/* Header */
+.header {
+  padding: var(--f7) 0 var(--f6);
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: var(--f6);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--f3);
+  display: flex;
+  align-items: center;
+  gap: var(--f3);
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: var(--f4);
+  height: 1.5px;
+  background: var(--text-muted);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 55px; /* fibonacci */
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: var(--f2);
+  text-transform: uppercase;
+}
+.sub {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Form */
+.form {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: var(--f6);
+}
+
+.formSection {
+  margin-bottom: var(--f5);
+  padding-bottom: var(--f5);
+  border-bottom: 1px solid var(--border);
+}
+.formSection:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.formSectionTitle {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--f4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--f4) var(--f6);
+  margin-bottom: 0;
+}
+
+.selectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--f4) var(--f6);
+}
+
+.field { display: flex; flex-direction: column; gap: var(--f2); }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.req { color: var(--nike-red); margin-left: 2px; }
+
+.input, .select {
+  padding: var(--f3) 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.input::placeholder { color: var(--text-faint); font-style: italic; }
+.input:focus, .select:focus { border-bottom-color: var(--accent); }
+
+.error {
+  padding: var(--f3) var(--f4);
+  border-left: 3px solid var(--nike-red);
+  background: #FEF2F2;
+  color: #9E2A2B;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: var(--f5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  gap: 0;
+  margin-top: var(--f6);
+  border: 1.5px solid var(--accent);
+  width: fit-content;
+}
+.cancelBtn {
+  padding: var(--f3) var(--f5);
+  background: transparent;
+  border: none;
+  border-right: 1.5px solid var(--accent);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cancelBtn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+.submitBtn {
+  padding: var(--f3) var(--f5);
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.submitBtn:hover { opacity: 0.85; }
+.submitBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 768px) {
+  .page { padding: 0 var(--f4) var(--f6); }
+  .title { font-size: 40px; }
+  .form { padding: var(--f4); }
+  .grid { grid-template-columns: 1fr; }
+  .selectGrid { grid-template-columns: 1fr; }
+}
