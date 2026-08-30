@@ -1,0 +1,376 @@
+
+> solevault@1.0.0 dev
+> concurrently "npm run server" "npm run client"
+
+[0] 
+[0] > solevault@1.0.0 server
+[0] > cd server && npm run dev
+[0] 
+[1] 
+[1] > solevault@1.0.0 client
+[1] > cd client && npm run dev
+[1] 
+[1] 
+[1] > client@0.0.0 dev
+[1] > vite
+[1] 
+[0] 
+[0] > server@1.0.0 dev
+[0] > nodemon index.js
+[0] 
+[0] [33m[nodemon] 3.1.14[39m
+[0] [33m[nodemon] to restart at any time, enter `rs`[39m
+[0] [33m[nodemon] watching path(s): *.*[39m
+[0] [33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[0] [32m[nodemon] starting `node index.js`[39m
+[0] ◇ injected env (7) from .env // tip: ⌘ enable debugging { debug: true }
+[1] 3:37:51 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+[1] 
+[1]   VITE v8.0.8  ready in 268 ms
+[1] 
+[1]   ➜  Local:   http://localhost:5173/
+[1]   ➜  Network: use --host to expose
+[0] MongoDB not configured — running in MOCK MODE with 80 seed cards
+[0] Oracle disabled
+[0] SoleVault API running on http://localhost:5001
+[0] [32m[nodemon] clean exit - waiting for changes before restart[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node index.js`[39m
+[0] ◇ injected env (7) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[0] MongoDB not configured — running in MOCK MODE with 80 seed cards
+[0] Oracle disabled
+[0] SoleVault API running on http://localhost:5001
+[0] [32m[nodemon] clean exit - waiting for changes before restart[39m
+[1] 3:45:30 PM [vite] (client) hmr update /src/index.css
+[1] 3:45:52 PM [vite] (client) hmr update /src/components/Navbar.jsx
+[1] 3:46:19 PM [vite] (client) hmr update /src/components/SneakerCard.jsx
+[1] 3:46:39 PM [vite] (client) hmr update /src/components/SneakerCard.jsx
+[1] 3:47:05 PM [vite] (client) hmr update /src/pages/CollectionPage.jsx
+[1] 3:47:37 PM [vite] (client) hmr update /src/pages/CardDetail.jsx
+[1] 3:48:01 PM [vite] (client) hmr update /src/pages/Dashboard.jsx
+[1] 3:48:23 PM [vite] (client) hmr update /src/pages/Dashboard.jsx
+[1] 3:48:43 PM [vite] (client) hmr update /src/pages/AddCard.jsx
+[1] 4:17:02 PM [vite] (client) hmr update /src/components/SneakerCard.jsx
+[1] 4:17:21 PM [vite] (client) hmr update /src/components/SneakerCard.jsx
+[1] 4:17:55 PM [vite] (client) hmr update /src/pages/CardDetail.jsx
+[1] 4:18:26 PM [vite] (client) hmr update /src/pages/CardDetail.jsx
+[1] 4:18:42 PM [vite] (client) hmr update /src/pages/CollectionPage.jsx
+[1] 4:19:23 PM [vite] (client) [Unhandled error] TypeError: undefined is not an object (evaluating 'sneaker.name.split')
+[1]  > SneakerCard src/components/SneakerCard.jsx:27:55
+[1]     25 |            <img src="/Front.png" alt="Card Front" className={styles.sideImage} />
+[1]     26 |            <div className={styles.overlay}>
+[1]     27 |              <div className={styles.name}>{sneaker.name.split(' (')[0]}</div>
+[1]        |                                                         ^
+[1]     28 |              <div className={styles.scoreLabel}>
+[1]     29 |                <span className={styles.score}>{Math.round(sneaker.nameScore)}</span>
+[1]  > react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:29
+[1]  > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:40
+[1]  > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10167:8
+[1]  > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:874:21
+[1]  > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17642:12
+[1]  > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:58
+[1]  > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+[1]  > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16584:18
+[1]  > performSyncWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18972:24
+[1]  > flushSyncWorkAcrossRoots_impl node_modules/react-dom/cjs/react-dom-client.development.js:18814:42
+[1]  > flushSyncWork$1 node_modules/react-dom/cjs/react-dom-client.development.js:16898:41
+[1]  > scheduleRefresh node_modules/react-dom/cjs/react-dom-client.development.js:113:8
+[1]  > ../../../../../@react-refresh:228:32
+[1]  > performReactRefresh ../../../../../@react-refresh:217:33
+[1]  > ../../../../../@react-refresh:604:22
+[1]  > ../../../../../@react-refresh:602:39
+[1] 
+[1] 4:19:23 PM [vite] (client) [console.warn] An error occurred in the <SneakerCard> component.
+[1] 
+[1] Consider adding an error boundary to your tree to customize error handling behavior.
+[1] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[1] 
+[1] 4:19:23 PM [vite] (client) [Unhandled error] TypeError: undefined is not an object (evaluating 'sneaker.name.split')
+[1]  > SneakerCard src/components/SneakerCard.jsx:27:55
+[1]     25 |            <img src="/Front.png" alt="Card Front" className={styles.sideImage} />
+[1]     26 |            <div className={styles.overlay}>
+[1]     27 |              <div className={styles.name}>{sneaker.name.split(' (')[0]}</div>
+[1]        |                                                         ^
+[1]     28 |              <div className={styles.scoreLabel}>
+[1]     29 |                <span className={styles.score}>{Math.round(sneaker.nameScore)}</span>
+[1]  > react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:29
+[1]  > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:40
+[1]  > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10167:8
+[1]  > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:874:21
+[1]  > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17642:12
+[1]  > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:58
+[1]  > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+[1]  > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16584:18
+[1]  > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18958:8
+[1]  > performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:46:22
+[1] 
+[1] 4:19:23 PM [vite] (client) [console.warn] An error occurred in the <SneakerCard> component.
+[1] 
+[1] Consider adding an error boundary to your tree to customize error handling behavior.
+[1] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[1] 
+[1] 4:37:01 PM [vite] (client) [Unhandled error] TypeError: undefined is not an object (evaluating 'sneaker.name.split')
+[1]  > SneakerCard src/components/SneakerCard.jsx:27:55
+[1]     25 |            <img src="/Front.png" alt="Card Front" className={styles.sideImage} />
+[1]     26 |            <div className={styles.overlay}>
+[1]     27 |              <div className={styles.name}>{sneaker.name.split(' (')[0]}</div>
+[1]        |                                                         ^
+[1]     28 |              <div className={styles.scoreLabel}>
+[1]     29 |                <span className={styles.score}>{Math.round(sneaker.nameScore)}</span>
+[1]  > react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:29
+[1]  > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:40
+[1]  > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10167:8
+[1]  > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:874:21
+[1]  > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17642:12
+[1]  > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:58
+[1]  > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+[1]  > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16584:18
+[1]  > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18958:8
+[1]  > performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:46:22
+[1] 
+[1] 4:37:01 PM [vite] (client) [console.warn] An error occurred in the <SneakerCard> component.
+[1] 
+[1] Consider adding an error boundary to your tree to customize error handling behavior.
+[1] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[1] 
+[1] 4:38:30 PM [vite] (client) [Unhandled error] TypeError: undefined is not an object (evaluating 'sneaker.name.split')
+[1]  > SneakerCard src/components/SneakerCard.jsx:27:55
+[1]     25 |            <img src="/Front.png" alt="Card Front" className={styles.sideImage} />
+[1]     26 |            <div className={styles.overlay}>
+[1]     27 |              <div className={styles.name}>{sneaker.name.split(' (')[0]}</div>
+[1]        |                                                         ^
+[1]     28 |              <div className={styles.scoreLabel}>
+[1]     29 |                <span className={styles.score}>{Math.round(sneaker.nameScore)}</span>
+[1]  > react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:29
+[1]  > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:40
+[1]  > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10167:8
+[1]  > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:874:21
+[1]  > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17642:12
+[1]  > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:58
+[1]  > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+[1]  > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16584:18
+[1]  > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18958:8
+[1]  > performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:46:22
+[1] 
+[1] 4:38:30 PM [vite] (client) [console.warn] An error occurred in the <SneakerCard> component.
+[1] 
+[1] Consider adding an error boundary to your tree to customize error handling behavior.
+[1] Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+[1] 
+[1] 4:40:23 PM [vite] (client) hmr update /src/components/Navbar.jsx, /src/pages/AddCard.jsx, /src/pages/CardDetail.jsx, /src/pages/CollectionPage.jsx, /src/pages/Dashboard.jsx
+[1] 4:40:31 PM [vite] (client) hmr update /src/components/SneakerCard.jsx
+[1] 4:40:49 PM [vite] (client) hmr update /src/pages/CardDetail.jsx
+[0] [32m[nodemon] restarting child process[39m
+[0] [32m[nodemon] starting `node index.js`[39m
+[1] npm run client exited with code SIGHUP
+[0] ◇ injected env (7) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[0] MongoDB not configured — running in MOCK MODE with 80 seed cards
+[0] Oracle disabled
+[0] SoleVault API running on http://localhost:5001
+[0] [0mGET /api/sneakers/stats [32m200[0m 23.322 ms - 181[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [32m200[0m 1.748 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [32m200[0m 0.253 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [32m200[0m 0.151 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [32m200[0m 0.119 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.579 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [32m200[0m 0.389 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [32m200[0m 0.576 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [32m200[0m 0.824 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.193 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.142 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.330 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [32m200[0m 0.427 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 0.213 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.089 ms - -[0m
+[0] Oracle Sync started at 2026-04-15T04:15:10.903Z
+[0] Oracle Sync: 0 updated, 80 skipped
+[0] [0mPOST /api/oracle/sync [32m200[0m 34.108 ms - 41[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 0.848 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.288 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 1.865 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.312 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.233 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.239 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 0.212 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.311 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.320 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.187 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=&sort=-nameScore&page=1&limit=40 [32m200[0m 3.737 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=&sort=-nameScore&page=1&limit=40 [36m304[0m 1.458 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=PE&sort=-nameScore&page=1&limit=40 [32m200[0m 0.399 ms - 56[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=Retro&sort=-nameScore&page=1&limit=40 [32m200[0m 0.527 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=Limited&sort=-nameScore&page=1&limit=40 [32m200[0m 0.240 ms - 56[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=Collab&sort=-nameScore&page=1&limit=40 [32m200[0m 0.264 ms - 56[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=GR&sort=-nameScore&page=1&limit=40 [32m200[0m 1.058 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 1.093 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.322 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.844 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.189 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 0.229 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 1.236 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.256 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.245 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.235 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.198 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 14.799 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.110 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 1.037 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.085 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 0.128 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.080 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.415 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.993 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.096 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.159 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 3.246 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.365 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 2.006 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=4&sort=-nameScore [36m304[0m 0.325 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 1.465 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=4&sort=-nameScore [36m304[0m 0.309 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.243 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=4&sort=-nameScore [36m304[0m 0.165 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.875 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=4&sort=-nameScore [36m304[0m 0.164 ms - -[0m
+[0] [0mGET /api/sneakers/4 [32m200[0m 35.893 ms - 474[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 5.473 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 5.608 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.403 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 7.637 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.738 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 11.042 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [32m200[0m 4.048 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [32m200[0m 0.218 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [32m200[0m 0.136 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [32m200[0m 0.446 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 2.613 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.402 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 5.218 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.814 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 2.643 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 1.063 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 3.392 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 2.765 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 1.639 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.757 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.199 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.194 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.354 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.669 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.227 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.527 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 6.090 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.374 ms - -[0m
+[0] [0mGET /api/sneakers/1 [32m200[0m 17.284 ms - 502[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 1.842 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 1.143 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.277 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.199 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.144 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 8.095 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 5.070 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 3.221 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 2.673 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.887 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 3.267 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.630 ms - -[0m
+[0] [0mGET /api/sneakers/4 [36m304[0m 0.487 ms - -[0m
+[0] Oracle Sync started at 2026-04-15T11:36:09.385Z
+[0] Oracle Sync: 0 updated, 80 skipped
+[0] [0mPOST /api/oracle/sync [32m200[0m 43.306 ms - 41[0m
+[0] Oracle Sync started at 2026-04-15T11:36:11.419Z
+[0] Oracle Sync: 0 updated, 80 skipped
+[0] [0mPOST /api/oracle/sync [32m200[0m 2.819 ms - 41[0m
+[0] [0mGET /api/sneakers/stats [32m200[0m 28.095 ms - 181[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 4.530 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [32m200[0m 2.583 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.124 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [32m200[0m 0.141 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=Famous&rarity=&releaseType=&sort=-nameScore&page=1&limit=39 [32m200[0m 15.446 ms - -[0m
+[0] [0mGET /api/sneakers/1 [32m200[0m 13.211 ms - 502[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.880 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 1.379 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.575 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 1.309 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 3.675 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=&rarity=&releaseType=&sort=-nameScore&page=1&limit=39 [32m200[0m 22.202 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 1.449 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.765 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.345 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.716 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.617 ms - -[0m
+[0] [0mGET /api/sneakers?search=&category=&rarity=&releaseType=&sort=-nameScore&page=1&limit=39 [32m200[0m 32.055 ms - -[0m
+[0] [0mGET /api/sneakers/stats [32m200[0m 2.241 ms - 181[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 3.129 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.911 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [32m200[0m 0.780 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 2.025 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 1.580 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.533 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.249 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.178 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.133 ms - -[0m
+[0] [0mGET /api/sneakers/stats [32m200[0m 10.671 ms - 181[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.503 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [32m200[0m 0.852 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [32m200[0m 0.417 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [32m200[0m 0.499 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [32m200[0m 0.137 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.246 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.101 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 1.083 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.608 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 2.930 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.755 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.306 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 2.944 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.774 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.647 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.494 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.302 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.210 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.180 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 4.330 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 1.142 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.262 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.118 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.104 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.078 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.123 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.151 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.139 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.089 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 3.808 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.236 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.640 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.196 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.399 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.348 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.491 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.068 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.122 ms - -[0m
+[0] [0mGET /api/sneakers?category=Common&limit=3&sort=-nameScore [36m304[0m 0.067 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 2.778 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.649 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.224 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 1.308 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.597 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.729 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 1.337 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.705 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 3.325 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.905 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.826 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.284 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.178 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.242 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.170 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.902 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 4.379 ms - -[0m
+[0] [0mGET /api/sneakers/stats [36m304[0m 0.712 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 10.907 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.302 ms - -[0m
+[0] [0mGET /api/sneakers?category=Famous&limit=3&sort=-nameScore [36m304[0m 0.686 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.292 ms - -[0m
+[0] [0mGET /api/sneakers?category=Rare&limit=3&sort=-nameScore [36m304[0m 0.679 ms - -[0m
+[0] [0mGET /api/sneakers?category=Collaboration&limit=3&sort=-nameScore [36m304[0m 0.254 ms - -[0m
