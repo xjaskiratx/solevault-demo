@@ -50,8 +50,8 @@ export default function Dashboard() {
               <div key={item._id} style={{ flex: 1, minWidth: 0 }}>
                 <ProductCard 
                   id={item._id}
-                  name={item.name}
-                  model={item.model}
+                  name={item.primaryName || item.name}
+                  model={item.commonName || item.officialColorway || item.model}
                   score={item.nameScore?.toFixed(2)}
                 />
               </div>
