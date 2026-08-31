@@ -17,19 +17,24 @@ export default function Dashboard() {
 
   useEffect(() => {
     const load = async () => {
-      const [statsRes, ...sectionRes] = await Promise.all([
-        fetchStats(),
-        ...CATEGORY_CONFIG.map(c =>
-          fetchSneakers({ category: c.key, limit: 3, sort: '-nameScore' })
-        ),
-      ]);
-      setStats(statsRes.data.data);
-      const map = {};
-      CATEGORY_CONFIG.forEach((c, i) => { map[c.key] = sectionRes[i].data.data; });
-      setSections(map);
-      setLoading(false);
+      try {
+        const [statsRes, ...sectionRes] = await Promise.all([
+          fetchStats(),
+          ...CATEGORY_CONFIG.map(c =>
+            fetchSneakers({ category: c.key, limit: 3, sort: '-nameScore' })
+          ),
+        ]);
+        setStats(statsRes.data.data);
+        const map = {};
+        CATEGORY_CONFIG.forEach((c, i) => { map[c.key] = sectionRes[i].data.data; });
+        setSections(map);
+      } catch (err) {
+        console.error('Failed to load Dashboard data:', err);
+      } finally {
+        setLoading(false);
+      }
     };
-    load().catch(console.error);
+    load();
   }, []);
 
   if (loading) return <div style={{ padding: '60px', textAlign: 'center', fontFamily: 'var(--ff-body)' }}>Loading Oracle Data...</div>;
