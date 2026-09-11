@@ -81,18 +81,11 @@ const start = async () => {
   }
 
   startOracleScheduler();
-  app.listen(PORT, () => console.log(`SoleVault API running on http://localhost:${PORT}`));
+  if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => console.log(`SoleVault API running on http://localhost:${PORT}`));
+  }
 };
 
 start().catch(console.error);
 
-// Keep process alive
-process.on('SIGTERM', () => process.exit(0));
-process.on('SIGINT', () => process.exit(0));
-process.on('uncaughtException', (err) => console.error('Uncaught:', err));
-process.on('unhandledRejection', (err) => console.error('Unhandled rejection:', err));
-
-// Prevent event loop from draining
-if (process.stdin.isTTY === false) {
-  process.stdin.resume();
-}
+module.exports = app;
